@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Для моей любимой девочки</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--bg1:#ffe0ea;--bg2:#f7a8c4;--ink:#5a1f3a;--soft:#8a3d62;--rose:#c2255c;--paper:#fff8ee;--pi:#4a2433;--e1:#f9e4d4;--e2:#edc4ac;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg1:#3a1233;--bg2:#12050f;--ink:#ffe3ec;--soft:#f0aac6}}
+:root[data-theme="dark"]{--bg1:#3a1233;--bg2:#12050f;--ink:#ffe3ec;--soft:#f0aac6}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+body{height:100%;margin:0;overflow:hidden;color:var(--ink);background:radial-gradient(ellipse at 50% 15%,var(--bg1),var(--bg2));font-family:'Caveat','Segoe Script',cursive}
+main{position:relative;height:100%}
+#bg{position:fixed;inset:0;overflow:hidden;pointer-events:none}
+.ht{position:absolute;bottom:-40px;color:#ff6b9d;opacity:0;animation:rise linear forwards}
+@keyframes rise{10%{opacity:.75}100%{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+.stage{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;padding:14px;transition:opacity .9s,transform .9s}
+.stage.off{opacity:0;pointer-events:none;transform:scale(.95)}
+.hint{margin:0;font-size:27px;color:var(--soft);text-align:center}
+.hint.top{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:24px}
+.env{position:relative;width:min(84vw,380px);aspect-ratio:3/2;cursor:pointer;perspective:1000px;filter:drop-shadow(0 18px 22px #0006);animation:float 4s ease-in-out infinite;outline:none}
+.env.open{animation:none;cursor:default}
+@keyframes float{50%{transform:translateY(-8px)}}
+.env>*{position:absolute}
+.back{inset:0;background:#e2b79c;border-radius:8px}
+.peek{left:6%;right:6%;top:5%;height:88%;background:var(--paper);border-radius:6px;z-index:2;transition:transform 1s .6s cubic-bezier(.2,.8,.2,1)}
+.env.open .peek{transform:translateY(-62%)}
+.front{inset:0;background:linear-gradient(160deg,#f1d2bd,var(--e2));clip-path:polygon(0 0,50% 52%,100% 0,100% 100%,0 100%);border-radius:8px;z-index:3}
+.flap{left:0;top:0;width:100%;height:52%;background:linear-gradient(var(--e1),#f2d3bf);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;z-index:4;transition:transform .7s ease,z-index 0s .35s}
+.env.open .flap{transform:rotateX(180deg);z-index:1}
+.addr{left:0;right:0;top:64%;text-align:center;font-size:clamp(17px,5.2vw,23px);line-height:1.15;color:#6b3a2a;z-index:5}
+.addr small{font-size:.8em;opacity:.7}
+.seal{left:50%;top:52%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ff7aa5,#b3123f);color:#fff;display:grid;place-items:center;font-size:23px;z-index:6;box-shadow:0 3px 8px #0006;transition:opacity .3s;animation:beat 1.6s infinite}
+.env.open .seal{opacity:0;animation:none}
+@keyframes beat{50%{transform:scale(1.12)}}
+.paper{width:min(92vw,460px);max-height:100%;overflow-y:auto;box-sizing:border-box;background:radial-gradient(circle at 20% 0,#fffdf8,var(--paper));color:var(--pi);border-radius:10px;padding:26px 22px 24px;box-shadow:0 22px 60px #0007;font-size:24px;line-height:1.3}
+.in{animation:up .6s both}
+@keyframes up{from{opacity:0;transform:translateY(12px)}}
+h2{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:1.3rem;line-height:1.3;color:#9c1c4c;margin:6px 0 14px}
+.paper p{margin:0 0 12px}
+.paper small{font-size:19px;color:#a0607a}
+.prog{height:6px;background:#f0d9cc;border-radius:9px;overflow:hidden;margin-bottom:12px}
+.prog i{display:block;height:100%;background:linear-gradient(90deg,#ff6b9d,#c2255c);transition:width .5s}
+textarea{width:100%;box-sizing:border-box;font:inherit;color:var(--pi);background:#fff9;border:2px dashed #e0ae94;border-radius:12px;padding:10px 12px;resize:none;outline:none}
+textarea:focus{border-color:var(--rose);border-style:solid}
+.opt{display:block;width:100%;text-align:left;font:inherit;color:var(--pi);background:#fff9;border:2px solid #efcbb6;border-radius:12px;padding:8px 14px;margin:8px 0;cursor:pointer;transition:.2s}
+.opt.sel{border-color:var(--rose);background:#ffe3ec}
+.row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+.btn{font-family:'Playfair Display',Georgia,serif;font-size:17px;color:#fff;background:linear-gradient(135deg,#ff6b9d,#c2255c);border:0;border-radius:999px;padding:12px 28px;cursor:pointer;box-shadow:0 6px 16px #c2255c66;transition:.3s}
+.btn:disabled{opacity:.4;box-shadow:none;cursor:default}
+.btn.ghost{background:#fff;color:#9c1c4c;box-shadow:inset 0 0 0 2px #efbfd0}
+.btn.hid{opacity:0;pointer-events:none}
+.w{display:inline-block;opacity:0;transform:translateY(8px);transition:opacity .7s,transform .7s;margin-right:.26em}
+.w.on{opacity:1;transform:none}
+.w b{font-weight:700;padding:0 3px;border-radius:5px;background:linear-gradient(#ffc2d6,#ffc2d6) no-repeat 0 92%/0 48%}
+.w.on b{animation:glow 1.8s .3s forwards}
+@keyframes glow{to{color:#c2255c;text-shadow:0 0 14px #ff6b9d99;background-size:100% 48%}}
+.how{font-size:21px;padding-left:24px;margin:4px 0 12px;line-height:1.22}
+.pad{position:relative;height:170px;background:#fff;border:2px dashed #e0ae94;border-radius:12px;overflow:hidden}
+.pad::after{content:'';position:absolute;left:8%;right:8%;bottom:36px;border-bottom:1px solid #ecd6c8}
+.pad canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;z-index:2}
+.pad span{position:absolute;left:0;right:0;bottom:8px;text-align:center;color:#d3b3a2;font-size:19px}
+.card{background:#fff;border-radius:12px;padding:12px;margin:12px auto;max-width:300px;text-align:center;box-shadow:0 6px 18px #c2255c22}
+.card img{display:block;max-width:100%;height:auto;margin:0 auto}
+.fin{text-align:center}
+.big{font-size:54px;text-align:center;color:#e0457b;animation:beat 1.4s infinite}
+@media (prefers-reduced-motion:reduce){.env,.seal,.big{animation:none}.ht{display:none}}
+</style>
+</head>
+<body>
+<div id="bg" aria-hidden="true"></div>
+<main>
+  <section class="stage" id="s1">
+    <p class="hint top">Тебе письмо ♥</p>
+    <div class="env" id="env" role="button" tabindex="0" aria-label="Открыть конверт">
+      <div class="back"></div>
+      <div class="peek"></div>
+      <div class="front"></div>
+      <div class="flap"></div>
+      <div class="addr"><small>От:</small> Арсений Калентьева Максимов<br><small>Кому:</small> моей любимой девочке</div>
+      <div class="seal">♥</div>
+    </div>
+    <p class="hint">нажми на конверт</p>
+  </section>
+  <section class="stage off" id="s2"><div class="paper" id="paper"></div></section>
+</main>
+<script>
+const $=id=>document.getElementById(id),P=$('paper'),bg=$('bg');
+const Q=[
+ {t:'Какой момент нашей первой недели тебе запомнился больше всего?',p:'Расскажи, что вспомнилось первым…'},
+ {t:'Что тебе во мне нравится больше всего? Назови хотя бы три причины.',p:'Пиши всё, что чувствуешь…'},
+ {t:'Какой для тебя идеальный вечер с любимым человеком?',o:['Кино, плед и горячий чай','Прогулка под звёздами','Готовим что-нибудь вместе','Просто быть рядом и молчать']},
+ {t:'Если бы мы могли уехать куда угодно уже завтра, то куда?',p:'Город, страна, море, горы…'},
+ {t:'Что бы ты хотела успеть сделать вместе этой зимой?',p:'Не стесняйся мечтать…'},
+ {t:'Что я могу делать ещё лучше, чтобы ты была счастливее?',p:'Мне правда важно это знать…'}
+];
+const A=[],TXT=[
+ 'Алиса, лисёнок мой, я не мастер говорить красивые слова, поэтому скажу как есть.',
+ 'Мы вместе всего неделю, но я уже понял, что ты мне очень [дорога]. Рядом с тобой мне [спокойно] и я [счастлив], просто от того что ты есть.',
+ 'Я хочу, чтобы у нас получилось [надолго], и обещаю быть рядом и поддерживать тебя, что бы ни случилось.',
+ 'Я буду стараться каждый день, чтобы стать для тебя [самым_лучшим_парнем]. Ты этого достойна.',
+ 'Улыбайся почаще, [лисёнок], ты у меня самая [лучшая] ♥'
+];
+let SIG='';
+const date=new Date().toLocaleDateString('ru-RU',{day:'numeric',month:'long',year:'numeric'});
+function hearts(n){for(let i=0;i<n;i++){const h=document.createElement('i');h.className='ht';h.textContent='♥';h.style.cssText='left:'+Math.random()*100+'%;font-size:'+(12+Math.random()*22)+'px;animation-duration:'+(5+Math.random()*7)+'s;animation-delay:'+Math.random()*3+'s';bg.append(h);setTimeout(()=>h.remove(),14000)}}
+function view(h){P.innerHTML='<div class="in">'+h+'</div>';P.scrollTop=0}
+function intro(){
+ view('<h2>Привет, лисёнок мой 🦊</h2><p>Я приготовил для тебя несколько вопросов. Отвечай честно, как чувствуешь ♥</p><div class="row"><button class="btn" id="st">Начать</button></div>');
+ $('st').onclick=()=>ask(0);
+}
+function ask(i){
+ const q=Q[i],n=Q.length;
+ view('<div class="prog"><i style="width:'+(i+1)/n*100+'%"></i></div><small>Вопрос '+(i+1)+' из '+n+'</small><h2>'+q.t+'</h2>'+
+  (q.o?q.o.map(o=>'<button class="opt">'+o+'</button>').join(''):'<textarea rows="5" placeholder="'+q.p+'"></textarea>')+
+  '<div class="row"><button class="btn" id="nx" disabled>Дальше</button></div>');
+ const nx=$('nx'),ta=P.querySelector('textarea');let v='';
+ if(ta)ta.oninput=()=>{v=ta.value.trim();nx.disabled=!v};
+ else P.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{P.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');v=b.textContent;nx.disabled=false});
+ nx.onclick=()=>{A[i]=v;i+1<n?ask(i+1):story()};
+}
+function story(){
+ view('<h2>Моей Алисе</h2><div id="tx"></div><div class="row"><button class="btn hid" id="go">Поставить подпись ♥</button></div>');
+ const sp=[];
+ TXT.forEach(p=>{const d=document.createElement('p');$('tx').append(d);p.split(' ').forEach((w,k)=>{
+  const s=document.createElement('span'),m=w.match(/^\[(.+)\](.*)$/);s.className='w';
+  if(m){const b=document.createElement('b');b.textContent=m[1].replace(/_/g,' ');s.append(b,m[2])}else s.textContent=w;
+  s._f=k===0;d.append(s);sp.push(s)})});
+ let k=0;const t=setInterval(()=>{
+  if(k>=sp.length){clearInterval(t);hearts(10);setTimeout(()=>{$('go').classList.remove('hid');P.scrollTo({top:P.scrollHeight,behavior:'smooth'})},1500);return}
+  const s=sp[k++];s.classList.add('on');if(s._f)s.scrollIntoView({block:'center',behavior:'smooth'})},170);
+ $('go').onclick=sign;
+}
+function sign(){
+ view('<h2>Твоя подпись</h2><ol class="how"><li>Коснись белого поля пальцем</li><li>Нарисуй свою подпись, можно с завитушкой ✨</li><li>Не понравилось? Нажми «Стереть» и попробуй снова</li><li>Всё хорошо? Нажми «Подписать»</li></ol><div class="pad" id="pad"><canvas id="cv"></canvas><span id="ph">подпись здесь</span></div><div class="row"><button class="btn ghost" id="clr">Стереть</button><button class="btn" id="ok" disabled>Подписать ♥</button></div>');
+ const cv=$('cv'),pad=$('pad'),ok=$('ok'),ctx=cv.getContext('2d'),dpr=window.devicePixelRatio||1;
+ const r=pad.getBoundingClientRect();cv.width=r.width*dpr;cv.height=r.height*dpr;
+ const style=()=>{ctx.setTransform(dpr,0,0,dpr,0,0);ctx.lineWidth=2.8;ctx.lineCap=ctx.lineJoin='round';ctx.strokeStyle='#1f2a6b';ctx.fillStyle='#1f2a6b'};style();
+ let d=0,l,m;
+ const pos=e=>{const b=cv.getBoundingClientRect();return{x:e.clientX-b.left,y:e.clientY-b.top}};
+ cv.onpointerdown=e=>{e.preventDefault();cv.setPointerCapture(e.pointerId);d=1;l=m=pos(e);ctx.beginPath();ctx.arc(l.x,l.y,1.4,0,7);ctx.fill();$('ph').style.display='none';ok.disabled=false};
+ cv.onpointermove=e=>{if(!d)return;const p=pos(e),n={x:(l.x+p.x)/2,y:(l.y+p.y)/2};ctx.beginPath();ctx.moveTo(m.x,m.y);ctx.quadraticCurveTo(l.x,l.y,n.x,n.y);ctx.stroke();l=p;m=n};
+ cv.onpointerup=cv.onpointercancel=()=>{d=0};
+ $('clr').onclick=()=>{ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,cv.width,cv.height);style();$('ph').style.display='';ok.disabled=true};
+ ok.onclick=()=>{SIG=cv.toDataURL('image/png');done()};
+}
+function done(){
+ view('<div class="big">♥</div><h2 class="fin">Спасибо, лисёнок мой</h2><p class="fin">Теперь это наше с тобой маленькое обещание. Я очень рад, что ты у меня есть ♥</p><div class="card"><img src="'+SIG+'" alt="Подпись Алисы"><small>Алиса, '+date+'</small></div><div class="row"><button class="btn" id="snd">Отправить Арсению</button></div>');
+ hearts(45);$('snd').onclick=send;
+}
+async function send(){
+ const b=$('snd'),text='Мои ответы ♥\n\n'+Q.map((q,i)=>(i+1)+'. '+q.t+'\n— '+A[i]).join('\n\n')+'\n\nПодпись: Алиса, '+date;
+ try{
+  const bin=atob(SIG.split(',')[1]),u=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);
+  const f=new File([u],'podpis-alisy.png',{type:'image/png'}),data={title:'Ответы Алисы',text};
+  if(navigator.canShare&&navigator.canShare({files:[f]}))data.files=[f];
+  if(navigator.share){await navigator.share(data);return}
+  await navigator.clipboard.writeText(text);b.textContent='Скопировано ✓';
+ }catch(e){}
+}
+const env=$('env'),open=()=>{
+ if(env.classList.contains('open'))return;
+ env.classList.add('open');hearts(16);
+ setTimeout(()=>{$('s1').classList.add('off');$('s2').classList.remove('off');intro()},2400);
+};
+env.onclick=open;env.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}};
+hearts(10);setInterval(()=>hearts(1),1500);
+</script>
+</body>
+</html>
